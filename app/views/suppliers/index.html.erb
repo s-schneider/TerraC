@@ -11,9 +11,10 @@
 
 <br><br>
 
+<div class='header' BGCOLOR="FFFFFF">
 <%= link_to 'Alle Lieferanten', new_supplier_path %> ||
 <%= link_to 'Neuer Lieferant', new_supplier_path %> ||
-
+</div>
 
 <% if @suppliers.present? %>
   <%= render "index", suppliers: @suppliers %>
