@@ -28,7 +28,9 @@
         <td><%= supplier.preorder_date %></td>
         <td><%= link_to 'Zeigen', supplier %></td>
         <td><%= link_to 'Ändern', edit_supplier_path(supplier) %></td>
-        <td><%= link_to 'Löschen', supplier, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+        <% if @user == 1 %>
+          <td><%= link_to 'Löschen', supplier, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -84,6 +84,9 @@
 
 <%= link_to 'Aktualisieren / Ändern', edit_receipt_path(@receipt) %> |
 <%= link_to 'Drucken', receipt_path(@receipt, :format => "pdf") %> |
-<!--<%= link_to 'Löschen', @receipt, method: :delete, data: { confirm: 'Sind Sie sicher?' } %> | -->
+<% if @user == 1 %>
+  <%= link_to 'Löschen', @receipt, method: :delete, data: { confirm: 'Sind Sie sicher?' } %> |
+<% end %>
 <%= link_to 'Erledigt', receipt_path(@receipt, receipt: {status: "inactive_receipt"}), method: :put, data: {confirm: "Erledigt? Sehr fleißig!"} %>
+
 

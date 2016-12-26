@@ -53,6 +53,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+    @user = User.find(session[:user_id]).id
     respond_to do |format|
       format.html do
         if params[:id]
