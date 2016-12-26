@@ -11,8 +11,10 @@
 
 <br><br>
 
+<div class='header' BGCOLOR="FFFFFF">
 <%= link_to 'Alle Kunden', customers_path %> ||
 <%= link_to 'Neuer Kunde', new_customer_path %> ||
+</div>
 
 <% if @customers.present? %>
   <%= render "index", customers: @customers %>

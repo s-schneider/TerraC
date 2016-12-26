@@ -6,6 +6,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 226) {
+                $(".header").addClass("fixed");
+            } else {
+                $(".header").removeClass("fixed");
+            }
+        });
+    </script>
+    <style type="text/css">
+        .fixed {
+        position:fixed;
+        width:100%;
+        top:0;
+        left:0;  
+        background-color: white      
+    }
+    </style>
+
   </head>
 
 <div class="text-right", id="user_header">

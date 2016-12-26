@@ -61,7 +61,11 @@ class ReceiptsController < ApplicationController
         end
       end
       format.pdf do
-        @supplier = Supplier.find(@receipt.supplier_id).name
+        if @receipt.supplier_id
+          @supplier = Supplier.find(@receipt.supplier_id).name
+        else
+          @supplier = @receipt.producer
+        end
         pdf = ReportPdf.new(@receipt, @supplier) # here it takes the Model we created
         send_data pdf.render, filename: "report.pdf", # and renders it
                               type: "application/pdf",
