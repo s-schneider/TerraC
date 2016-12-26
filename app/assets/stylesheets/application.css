@@ -25,7 +25,6 @@ body {
     min-height: 600px;
 }
 #header_placeholder {
-    height:20px;
+    height:100px;
     width:100%;
-    display:none;
 }
