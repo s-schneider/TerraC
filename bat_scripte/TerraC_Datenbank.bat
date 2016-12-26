@@ -2,7 +2,7 @@
 set PATH=c:\windows\system32;c:\windows
 set PATH=%PATH%;c:\Ruby23-x64\bin
 set PATH=%PATH%;c:\Programme\MySQL\MySQL Server 5.7\bin
-set SSL_CERT_FILE="C:\users\Vaubel\cacert.pem"
+set SSL_CERT_FILE="C:\users\cacert.pem"
 
 start /B "Starting Database"
 
