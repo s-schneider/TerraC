@@ -1,0 +1,33 @@
+<h1>Kunden</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Straße</th>
+      <th>PLZ, Wohnort</th>
+      <th>Telefon</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.customer_surname + ", " + customer.customer_name, customer %></td>
+        <td><%= customer.customer_street %></td>
+        <td><%= customer.customer_town %></td>
+        <td><%= customer.customer_phone %></td>
+        <td><%= mail_to customer.customer_email, customer.customer_email %></td>
+        <td><%= link_to 'Zeigen', customer %></td>
+        <td><%= link_to 'Ändern', edit_customer_path(customer) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

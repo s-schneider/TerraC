@@ -1,0 +1,10 @@
+<% if @user == 8 %>
+<%= link_to 'Kunden', customers_path %> |
+<%= link_to 'Vorgänge', receipts_path %> |
+<%= link_to 'Lieferanten', suppliers_path %> |
+<%= link_to 'Artikel', articles_path %> |
+<% else %>
+<%= link_to 'Kunden', customers_path %> |
+<%= link_to 'Vorgänge', receipts_path %> |
+<%= link_to 'Lieferanten', suppliers_path %> |
+<% end %>

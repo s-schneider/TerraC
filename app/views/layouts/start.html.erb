@@ -1,0 +1,16 @@
+<div class="text-center", id="user_header">
+<br><br>
+<img src="/assets/large/pic.png", width="600"></img>
+<br><br>
+<% if current_user %>
+	<br><br>
+	<%= link_to 'Kunden', customers_path %> |
+	<%= link_to 'Vorgänge', receipts_path %> |
+	<%= link_to 'Lieferanten', suppliers_path %> |
+<% else %>
+	 <h1>Terracamp Datenbank</h1> 
+	 <h4>Sie sind mit keiner Filiale eingeloggt</h4>   
+<% end %>
+<br><br><br><br>
+ 
+</div>

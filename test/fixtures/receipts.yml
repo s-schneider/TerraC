@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receipt_number: MyString
+  receipt_type: MyString
+  receipt_person: MyString
+  receipt_date: 2016-11-29
+  receipt_notes: MyText
+  customer_id: 1
+  producer: MyString
+  article: MyString
+  article_color: MyString
+  article_size: MyString
+  type_id: 1
+  receipt_type: MyString
+  order_date: 2016-11-29
+  order_receiving: 2016-11-29
+  purchase_date: 2016-11-29
+  article_flaw: MyString
+  receipt_true: MyString
+  customer_notice: 2016-11-29
+
+two:
+  receipt_number: MyString
+  receipt_type: MyString
+  receipt_person: MyString
+  receipt_date: 2016-11-29
+  receipt_notes: MyText
+  customer_id: 1
+  producer: MyString
+  article: MyString
+  article_color: MyString
+  article_size: MyString
+  type_id: 1
+  receipt_type: MyString
+  order_date: 2016-11-29
+  order_receiving: 2016-11-29
+  purchase_date: 2016-11-29
+  article_flaw: MyString
+  receipt_true: MyString
+  customer_notice: 2016-11-29

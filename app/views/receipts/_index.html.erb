@@ -1,0 +1,44 @@
+<h1>Vorgänge</h1>
+
+<table border="1" cellspacing="0" cellpadding="10" class="table">
+  <thead>
+    <tr>
+      <th><%= link_to "Vorgangs-Nr", receipts_path(receipt_number: 1 ) %></th>
+      <th><%= link_to "Datum", receipts_path(dateup: 1 ) %></th>
+      <th>Vorgangs-Art</th>
+      <th>Kunde</th>
+      <th>Hersteller</th>
+      <th>Artikel</th>
+      <th>Ansprechpartner</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% receipts.each do |receipt| %>
+      <tr>
+        <td><%= link_to receipt.receipt_number, receipt %></td>
+        <td><%= receipt.receipt_date.strftime("%d.%m.%Y") %></td>
+        <td><%= link_to receipt.receipt_type, receipts_path(type: receipt.receipt_type) %></td>
+        <td><%= link_to receipt.customer.customer_surname, receipt.customer %></td>
+        <td><%= link_to receipt.producer, suppliers_path(from_r: receipt.supplier_id) %></td>
+        <td><%= receipt.article %></td>
+        <td><%= link_to receipt.receipt_person, receipts_path(person: receipt.receipt_person) %></td>
+        
+        <% if receipt.status == "active_receipt" %>
+          <td>Aktiv</td>
+        <% else %>
+          <td>Erledigt</td>
+        <% end %> 
+
+        <td><%= link_to 'Zeigen', receipt %></td>
+        <td><%= link_to 'Drucken', receipt_path(receipt, :format => "pdf") %></td>
+        <td><%= link_to 'Erledigt', receipt_path(receipt, receipt: {status: "inactive_receipt"}), method: :put, data: {confirm: "Erledigt? Sehr fleißig!"} %></td>
+        <!-- <td><%= link_to 'Löschen', receipt, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

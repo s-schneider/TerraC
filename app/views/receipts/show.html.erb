@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'layouts/links', user: @user %>
+<br><br>
+
+<h1> Vorgang <%= @receipt.receipt_number %> </h1>
+
+<p>
+  <strong> Kunde </strong>
+  <%= link_to @receipt.customer.customer_name + " " + @receipt.customer.customer_surname, @receipt.customer %>
+</p>
+
+<p>
+  <strong>Ansprechpartner:</strong>
+  <%= link_to @receipt.receipt_person, receipts_path(person: @receipt.receipt_person) %>
+</p>
+
+
+<table border="1" cellspacing="0" cellpadding="10" class="table">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Vorgangs-Art</th>
+      <th>Hersteller</th>
+      <th>Artikel-Bez.</th>
+      <th>Anzahl</th>
+      <th>Farbe</th>
+      <th>Größe</th>
+      <th>Bestellt / Verschickt am</th>
+      <th>Wareneingang</th>
+      <th>Kundeninfo</th>
+    </tr>
+  </thead>
+
+<% if @receipt.order_date == nil %>
+  <% @order_date =  " " %>
+<% else %>
+  <% @order_date = @receipt.order_date.strftime("%d.%m.%Y") %>
+<% end %>
+
+<% if @receipt.order_receiving == nil %>
+  <% @order_receiving =  " " %>
+<% else %>
+  <% @order_receiving = @receipt.order_receiving.strftime("%d.%m.%Y") %>
+<% end %>
+
+  <tbody>
+    <tr>
+      <td><%= @receipt.receipt_date.strftime("%d.%m.%Y") %></td>
+      <td><%= link_to @receipt.receipt_type, receipts_path(type: @receipt.receipt_type) %></td>
+      <td><%= @receipt.producer %></td>
+      <td><%= @receipt.article %></td>
+      <td><%= @receipt.article_quantity %></td>
+      <td><%= @receipt.article_color %></td>
+      <td><%= @receipt.article_size %></td>
+      <td><%= @order_date %></td>
+      <td><%= @order_receiving %></td>
+      <td><%= @receipt.customer_notice %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <strong>Bemerkungen:</strong>
+  <br><br>
+  <%= @receipt.receipt_notes %>
+</p>
+
+<% if @receipt.receipt_type == "Reklamation" || @receipt.receipt_type == "Reparatur" %>
+  <p>
+    <strong>Kaufdatum:</strong>
+    <% if @receipt.purchase_date == nil %>
+      <%= " " %>
+    <% else %>
+      <%= @receipt.purchase_date.strftime("%d.%m.%Y") %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Kaufbeleg:</strong>
+    <%= @receipt.receipt_true %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Aktualisieren / Ändern', edit_receipt_path(@receipt) %> |
+<%= link_to 'Drucken', receipt_path(@receipt, :format => "pdf") %> |
+<!--<%= link_to 'Löschen', @receipt, method: :delete, data: { confirm: 'Sind Sie sicher?' } %> | -->
+<%= link_to 'Erledigt', receipt_path(@receipt, receipt: {status: "inactive_receipt"}), method: :put, data: {confirm: "Erledigt? Sehr fleißig!"} %>
+

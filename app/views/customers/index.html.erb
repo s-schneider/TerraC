@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'layouts/links', user: @user %>
+
+<br>
+
+<%= form_tag(customers_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Kunden durchsuchen" %>
+<%= submit_tag "Suchen" %>
+<% end %>
+
+<br><br>
+
+<%= link_to 'Alle Kunden', customers_path %> ||
+<%= link_to 'Neuer Kunde', new_customer_path %> ||
+
+<% if @customers.present? %>
+  <%= render "index", customers: @customers %>
+<% else %>
+  <p>Keine Kunden gefunden, die den Suchbegriff <%= params[:search] %> beinhalten.</p>
+<% end %>
+
+
+
+
+
+
+

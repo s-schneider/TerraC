@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TerraC</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<div class="text-right", id="user_header">
+<img src="/assets/large/logo.png", width="100" align="left"></img>
+<br>
+<% if current_user %>
+  Eingeloggt als:
+  <%= current_user.email %> |
+  <%= link_to 'Startseite', root_path %> |
+  <%= link_to 'Ausloggen', logout_path %>
+<% else %>
+  <%= link_to "Einloggen", login_path %>
+<% end %>
+</div>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
+
+
+

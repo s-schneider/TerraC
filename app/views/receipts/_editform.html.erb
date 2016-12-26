@@ -1,0 +1,102 @@
+<%= form_for(receipt) do |f| %>
+  <% if receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
+
+      <ul>
+      <% receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label "Vorgangsstatus" %>
+    <%= f.select :status, ['active_receipt','inactive_receipt'] %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "Kunde" %>
+    <%= f.collection_select(:customer_id, Customer.all, :id, :customer_surname) %> 
+  </div>
+
+
+  <div class="field">
+    <%= f.label "Vorgangs-Art" %>
+    <%= f.select :receipt_type, ['Bestellung','Reparatur','Reklamation'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Ansprechpartner" %>
+    <%= f.text_field :receipt_person, required: true, placeholder: "Erforderlich" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Hersteller" %>
+    <%= f.collection_select(:supplier_id, Supplier.all.order('name'), :id, :name) %>
+    <%= link_to 'Hersteller nicht gelistet?', new_supplier_path %>
+  </div>
+
+    <div class="field">
+    <%= f.label "Artikel-Bezeichnung" %>
+    <%= f.text_field :article %>
+  </div>
+
+    <div class="field">
+    <%= f.label "Anzahl" %>
+    <%= f.text_field :article_quantity %>
+  </div>
+
+    <div class="field">
+    <%= f.label "Farbe" %>
+    <%= f.text_field :article_color %>
+  </div>
+
+    <div class="field">
+    <%= f.label "Größe" %>
+    <%= f.text_field :article_size %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Bemerkungen" %>
+    <%= f.text_area :receipt_notes, size: "100x20" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Kaufbeleg" %>
+    <%= f.select :receipt_true, [" ", "Ja", "Nein"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Kaufdatum" %>
+    <%= f.date_select :purchase_date, {:include_blank => true, :default => nil, :order => [:day, :month, :year]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Mangel ist markiert?" %>
+    <%= f.select :article_flaw, [" ", "Ja", "Nein"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Bestellt am:" %>
+    <%= f.date_select :order_date, {:include_blank => true, :default => nil, :order => [:day, :month, :year]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Wareneingang" %>
+    <%= f.date_select :order_receiving, {:include_blank => true, :default => nil, :order => [:day, :month, :year]} %>
+  </div>
+
+    <div class="field">
+    <%= f.label "Kundeninfo am" %>
+    <%= f.date_select :customer_notice, {:include_blank => true, :default => nil, :order => [:day, :month, :year]} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Vorgang erstellen / aktualisieren" %>
+  </div>
+<% end %>
