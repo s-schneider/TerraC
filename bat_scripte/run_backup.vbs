@@ -1,1 +1,0 @@
-CreateObject("Wscript.Shell").Run "TerraC_backup.bat", 0, True
