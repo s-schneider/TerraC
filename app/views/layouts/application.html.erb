@@ -9,10 +9,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript">
         $(window).scroll(function () {
-            if ($(window).scrollTop() > 226) {
+            if ($(window).scrollTop() > 199) {
                 $(".header").addClass("fixed");
+                $('#header_placeholder').css({display: 'block'});
             } else {
                 $(".header").removeClass("fixed");
+                $('#header_placeholder').css({display: 'none'});
             }
         });
     </script>
