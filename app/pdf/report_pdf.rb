@@ -5,6 +5,8 @@ class ReportPdf < Prawn::Document
     super(top_margin: 40, :page_layout => :portrait)
     @receipt = receipt
     @receipt.producer = supplier
+    logo = "#{Rails.root}/app/assets/images/large/logo.png" 
+    image logo, :position => :left, :width => 100  #:at => [50,450], :width => 450
 
     header
     move_down 50 # cursor set down
@@ -22,12 +24,12 @@ class ReportPdf < Prawn::Document
   end
 
   def header
-        bounding_box [bounds.left - 100, bounds.top], :width  => bounds.width do
+        bounding_box [bounds.left - 0, bounds.top], :width  => bounds.width do
         font "Helvetica"
         text "terracamp GmbH Münster \n Stadtfiliale Aegidimarkt 4, 48143 Münster \n", :align => :center, :size => 15
         text "terracamp.aegidiimarkt@terracamp.de \n fon 0251 - 45777      fax 0251 - 57438", :align => :center, :size => 12
       end
-        bounding_box [bounds.left + 200, bounds.top], :width => bounds.width do
+        bounding_box [bounds.left + 220, bounds.top], :width => bounds.width do
         font "Helvetica"
         text "Vorgangs-Nr \n ", :align => :center, :size => 15
 		if @receipt.receipt_type == "Bestellung"
