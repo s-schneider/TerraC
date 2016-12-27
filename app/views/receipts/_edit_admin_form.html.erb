@@ -12,23 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Datum" %>
-    <%= f.date_select :receipt_date, {:order => [:day, :month, :year]} %>
+    <%= f.label "Vorgangsnummer" %>
+    <%= f.text_field :receipt_number %>
   </div>
 
-  <% if @customer  %>    
+  <div class="field">
+    <%= f.label "Vorgangsstatus" %>
+    <%= f.select :status, ['active_receipt','inactive_receipt'] %>
+  </div>
 
-    <%= f.hidden_field :customer_id, {:value => Customer.find(params[:format]).id}%>
 
-    <%= f.hidden_field :status, {:value => "active_receipt" } %>
-
-    <div class="field">
-      <%= f.label "Kunde" %> 
-      <%= @customer.customer_name %>   
-      <%= @customer.customer_surname %>
-    </div>
-
-  <% end %>
+  <div class="field">
+    <%= f.label "Kunde" %>
+    <%= f.collection_select(:customer_id, Customer.all, :id, :customer_surname) %> 
+  </div>
 
 
   <div class="field">
@@ -41,7 +38,6 @@
     <%= f.text_field :receipt_person, required: true, placeholder: "Erforderlich" %>
   </div>
 
-
   <div class="field">
     <%= f.label "Hersteller" %>
     <%= f.collection_select(:supplier_id, Supplier.all.order('name'), :id, :name) %>
@@ -50,7 +46,7 @@
 
     <div class="field">
     <%= f.label "Artikel-Bezeichnung" %>
-    <%= f.text_field :article, required: true, placeholder: "Erforderlich" %>
+    <%= f.text_field :article %>
   </div>
 
     <div class="field">

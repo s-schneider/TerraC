@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-	has_many :receipts
+	# has_many :receipts
 
 
 	def self.search(search)

@@ -84,6 +84,7 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/1/edit
   def edit
+    @user = User.find(session[:user_id]).id
   end
 
   # POST /receipts
