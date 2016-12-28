@@ -61,7 +61,9 @@ class ReceiptsController < ApplicationController
         end
       end
       format.pdf do
-        if @receipt.supplier_id
+        if @receipt.supplier
+          @supplier = @receipt.supplier.name
+        elsif @receipt.supplier_id
           @supplier = Supplier.find(@receipt.supplier_id).name
         else
           @supplier = @receipt.producer
