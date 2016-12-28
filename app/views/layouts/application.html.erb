@@ -11,10 +11,13 @@
         $(window).scroll(function () {
             if ($(window).scrollTop() > 199) {
                 $(".header").addClass("fixed");
-                $('#header_placeholder').css({display: 'block'});
+                $(".header").addClass("header_background");
+                $(".cbody").addClass("header_placeholder").css({display: 'block'});
+
             } else {
                 $(".header").removeClass("fixed");
-                $('#header_placeholder').css({display: 'none'});
+                $(".header").removeClass("header_background");
+                $(".cbody").removeClass("header_placeholder").css({display: 'block'});
             }
         });
     </script>
@@ -25,6 +28,16 @@
         top:0;
         left:100;  
         background-color: white      
+    }
+    </style>
+    <style type="text/css">
+        .header_placeholder {
+        margin-top: 50px;   
+    }
+    </style>
+    <style type="text/css">
+        .header_background {
+        height: 30px;   
     }
     </style>
 
@@ -43,9 +56,12 @@
 <% end %>
 </div>
 
+<div class="cbody">
   <body>
     <%= yield %>
   </body>
+</div>
+
   <footer>
     <div style="color:#D3D3D3">
       <br><br><br><br>

@@ -1,5 +1,4 @@
 class Supplier < ApplicationRecord
-	has_many :customers
 	has_many :receipts
 
 	def self.search(search)

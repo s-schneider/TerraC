@@ -15,7 +15,6 @@
   <%= link_to @receipt.receipt_person, receipts_path(person: @receipt.receipt_person) %>
 </p>
 
-
 <table border="1" cellspacing="0" cellpadding="10" class="table">
   <thead>
     <tr>
@@ -48,7 +47,11 @@
     <tr>
       <td><%= @receipt.receipt_date.strftime("%d.%m.%Y") %></td>
       <td><%= link_to @receipt.receipt_type, receipts_path(type: @receipt.receipt_type) %></td>
-      <td><%= @receipt.producer %></td>
+      <% if @receipt.supplier %>
+        <td><%= link_to @receipt.supplier.name, @receipt.supplier %></td>
+      <% else %>
+        <td><%= @receipt.producer %></td>
+      <% end %>
       <td><%= @receipt.article %></td>
       <td><%= @receipt.article_quantity %></td>
       <td><%= @receipt.article_color %></td>

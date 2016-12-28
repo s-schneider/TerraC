@@ -12,13 +12,6 @@
   <% end %>
 
 
-
-  <div class="field">
-    <%= f.label "Vorgangsstatus" %>
-    <%= f.select :status, ['active_receipt','inactive_receipt'] %>
-  </div>
-
-
   <div class="field">
     <%= f.label "Kunde" %>
     <%= f.collection_select(:customer_id, Customer.all, :id, :customer_surname) %> 

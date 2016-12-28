@@ -26,7 +26,11 @@
         <td><%= receipt.receipt_date.strftime("%d.%m.%Y") %></td>
         <td><%= link_to receipt.receipt_type, receipts_path(type: receipt.receipt_type) %></td>
         <td><%= link_to receipt.customer.customer_surname, receipt.customer %></td>
-        <td><%= link_to receipt.producer, suppliers_path(from_r: receipt.supplier_id) %></td>
+        <% if receipt.supplier %>
+          <td><%= link_to receipt.supplier.name, supplier_path(receipt.supplier) %></td>
+        <% else %>
+          <td><%= link_to receipt.producer, suppliers_path(from_r: receipt.supplier_id) %></td>
+        <% end %>
         <td><%= receipt.article %></td>
         <td><%= link_to receipt.receipt_person, receipts_path(person: receipt.receipt_person) %></td>
         

@@ -61,7 +61,9 @@ class ReceiptsController < ApplicationController
         end
       end
       format.pdf do
-        if @receipt.supplier_id
+        if @receipt.supplier
+          @supplier = @receipt.supplier.name
+        elsif @receipt.supplier_id
           @supplier = Supplier.find(@receipt.supplier_id).name
         else
           @supplier = @receipt.producer
@@ -84,6 +86,7 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/1/edit
   def edit
+    @user = User.find(session[:user_id]).id
   end
 
   # POST /receipts

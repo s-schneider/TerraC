@@ -12,12 +12,11 @@
 <br><br>
 
 <div class='header' BGCOLOR="FFFFFF">
+
 <%= link_to 'Alle Vorgänge', receipts_path %> ||
 <%= link_to 'Bestellungen', receipts_path(type: "Bestellung") %> ||
 <%= link_to 'Reparaturen', receipts_path(type: "Reparatur") %> ||
-<%= link_to 'Reklamationen', receipts_path(type: "Reklamation") %> ||
-
-<br><br>
+<%= link_to 'Reklamationen', receipts_path(type: "Reklamation") %> |||
 <%= link_to 'Aktive Vorgänge', receipts_path(state: "active_receipt") %> |||
 <%= link_to 'Erledigte Vorgänge', receipts_path(state: "inactive_receipt") %> |||
 
