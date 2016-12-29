@@ -17,7 +17,6 @@ class ReportPdf < Prawn::Document
     horizontal_rule
     move_down 20
     text "Bestell- / Lieferinformationen"
-    move_down 20
     shipping_info
     move_down 20
     customer_file
@@ -80,7 +79,8 @@ class ReportPdf < Prawn::Document
   end
 
   def customer_file
-    text "Kundendaten"
+    text ([{ :text => "Kundendaten",
+          :style => [:bold] }])
     # [{:content => "Kundendaten", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}],
     content = [   
                   [{:content => "Name: "}, {:content => @receipt.customer.customer_name + " " + @receipt.customer.customer_surname}],
