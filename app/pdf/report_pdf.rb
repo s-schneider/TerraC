@@ -16,9 +16,9 @@ class ReportPdf < Prawn::Document
     move_down 20
     horizontal_rule
     move_down 20
-    customer_file
-    move_down 20
     text "Bestell- / Lieferinformationen"
+    move_down 20
+    customer_file
     shipping_info
 
   end
