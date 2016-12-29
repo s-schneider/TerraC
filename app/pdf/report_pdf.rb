@@ -19,6 +19,7 @@ class ReportPdf < Prawn::Document
     text "Bestell- / Lieferinformationen"
     move_down 20
     customer_file
+    move_down 20
     shipping_info
 
   end
