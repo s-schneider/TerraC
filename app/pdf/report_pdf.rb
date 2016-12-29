@@ -32,11 +32,7 @@ class ReportPdf < Prawn::Document
         bounding_box [bounds.left + 220, bounds.top], :width => bounds.width do
         font "Helvetica"
         text "Vorgangs-Nr \n ", :align => :center, :size => 15
-		if @receipt.receipt_type == "Bestellung"
-			text @receipt.receipt_number, :align => :center, :size => 15
-		else
-			text "AEG " + @receipt.receipt_number, :align => :center, :size => 15
-		end 
+  			text @receipt.receipt_number, :align => :center, :size => 15
       end
   end 
 
