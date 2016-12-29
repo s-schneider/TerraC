@@ -15,17 +15,22 @@
     <% @suppliers.each do |supplier| %>
       <tr>
         <td><%= link_to supplier.name, supplier %></td>
-        <% if supplier.website %>
+        <% if supplier.website != nil %>
           <td><%= link_to "Homepage", url_with_protocol(supplier.website), :target => '_blank' %></td>
         <% else %>
           <td></td>
         <% end %>
-        <% if supplier.b2b %>
+        <% if supplier.b2b != nil %>
           <td><%= link_to "Bestellportal", url_with_protocol(supplier.b2b), :target => '_blank' %></td>
         <% else %>
           <td></td> 
         <% end %>
-        <td><%= supplier.preorder_date %></td>
+
+        <% if supplier.preorder_date == nil %>
+          <%= " " %>
+        <% else %>
+          <td><%= supplier.preorder_date.strftime("%d.%m.%Y") %></td>
+        <% end %>
         <td><%= link_to 'Zeigen', supplier %></td>
         <td><%= link_to 'Ändern', edit_supplier_path(supplier) %></td>
         <% if @user == 1 %>
