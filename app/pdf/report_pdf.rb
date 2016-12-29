@@ -79,8 +79,7 @@ class ReportPdf < Prawn::Document
   end
 
   def customer_file
-    text ([{ :text => "Kundendaten",
-          :style => [:bold] }])
+    text "Kundendaten"
     # [{:content => "Kundendaten", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}],
     content = [   
                   [{:content => "Name: "}, {:content => @receipt.customer.customer_name + " " + @receipt.customer.customer_surname}],
