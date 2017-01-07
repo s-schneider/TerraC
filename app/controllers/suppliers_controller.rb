@@ -2,6 +2,7 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
   before_action :authorize
 
+  require 'net/imap'
   # GET /suppliers
   # GET /suppliers.json
   
@@ -85,6 +86,23 @@ class SuppliersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to suppliers_url, notice: 'Lieferant erfolgreich gelöscht.' }
       format.json { head :no_content }
+    end
+  end
+
+  #find correct server adress etc.
+  def mail_access
+    conn = Net::IMAP.new('imap.mail.yahoo.com', 993, ssl:true)
+    conn.login("email", "mypassword")
+
+    conn.select("INBOX")
+    conn.uid_search(['ALL']).each do |uid|
+      # fetches the straight up source of the email for ymail to parse
+      msg = conn.fetch(uid, 'RFC822').first.attr['RFC822']
+
+      mail = Mail.read_from_string msg
+      puts mail.subject
+      puts mail.text_part.body.to_s
+      puts mail.html_part.body.to_s
     end
   end
 
