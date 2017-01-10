@@ -27,4 +27,9 @@ body {
 #header_placeholder {
     height:100px;
     width:100%;
+    background-color: #FFD700;
+}
+
+head {
+	background-color: #FFD700;
 }

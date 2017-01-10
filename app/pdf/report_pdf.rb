@@ -86,6 +86,7 @@ class ReportPdf < Prawn::Document
                   [{:content => "Straße: "}, {:content => @receipt.customer.customer_street}],
                   [{:content => "PLZ, Wohnort: "}, {:content => @receipt.customer.customer_town}],
                   [{:content => "Telefon: "},{:content => @receipt.customer.customer_phone}],
+                  [{:content => "Handy: "},{:content => @receipt.customer.customer_mobile}],
                   [{:content => "Email: "}, {:content => @receipt.customer.customer_email}]
     ]
 
