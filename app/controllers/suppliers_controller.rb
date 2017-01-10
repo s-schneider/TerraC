@@ -35,7 +35,12 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers/new
   def new
-    @supplier = Supplier.new
+    #FIND WHAT IS SUBMITTED BY RAILS
+    if params['active']
+       redirect_to Customer.first
+    else
+      @supplier = Supplier.new
+    end
   end
 
   # GET /suppliers/1/edit
