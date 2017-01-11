@@ -28,7 +28,12 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
-    @customer = Customer.new
+    if params[:supplier_id]
+      @customer = Customer.new
+      @supplier_id = params[:supplier_id]
+    else
+      @customer = Customer.new
+    end
   end
 
   # GET /customers/1/edit
@@ -101,6 +106,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:customer_name, :customer_street, :customer_town, :customer_phone, :customer_fax, :customer_email, :customer_notes, :customer_surname, :customer_mobile, :customer_club, :customer_newsletter)
+      params.require(:customer).permit(:customer_name, :customer_street, :customer_town, :customer_phone, :customer_fax, :customer_email, :customer_notes, :customer_surname, :customer_mobile, :customer_club, :customer_newsletter, :supplier_id)
     end
 end
