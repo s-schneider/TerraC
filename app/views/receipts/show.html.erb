@@ -18,8 +18,8 @@
 <p>
   <strong>Ansprechpartner Hersteller:</strong>
   <% if @receipt.supplier %>
-    <%= link_to Customer.find(@receipt.supplier.service_id).full_name, customer_path(@receipt.supplier.service_id) %>
-
+    <!-- %= link_to Customer.find(@receipt.supplier.service_id).full_name, customer_path(@receipt.supplier.service_id) %> -->
+    Noch kein Hersteller aus der Datenbank verknüpft.    
   <% else %>
     Noch kein Hersteller aus der Datenbank verknüpft.
   <% end %>
