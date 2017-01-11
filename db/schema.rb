@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161222134255) do
     t.string   "customer_mobile"
     t.string   "customer_club"
     t.string   "customer_newsletter"
+    t.string   "customer_group"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -96,7 +97,6 @@ ActiveRecord::Schema.define(version: 20161222134255) do
     t.string   "website"
     t.string   "b2b"
     t.text     "repair_condition"
-    t.         "attachment"
   end
 
   create_table "users", force: :cascade do |t|
