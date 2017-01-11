@@ -11,8 +11,18 @@
 </p>
 
 <p>
-  <strong>Ansprechpartner:</strong>
+  <strong>Ansprechpartner Terracamp:</strong>
   <%= link_to @receipt.receipt_person, receipts_path(person: @receipt.receipt_person) %>
+</p>
+
+<p>
+  <strong>Ansprechpartner Hersteller:</strong>
+  <% if @receipt.supplier %>
+    <%= link_to Customer.find(@receipt.supplier.service_id).full_name, customer_path(@receipt.supplier.service_id) %>
+
+  <% else %>
+    Noch kein Hersteller aus der Datenbank verknüpft.
+  <% end %>
 </p>
 
 <table border="1" cellspacing="0" cellpadding="10" class="table">
