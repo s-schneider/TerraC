@@ -35,7 +35,12 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers/new
   def new
-    @supplier = Supplier.new
+    #FIND WHAT IS SUBMITTED BY RAILS
+    if params['active']
+       redirect_to Customer.first
+    else
+      @supplier = Supplier.new
+    end
   end
 
   # GET /suppliers/1/edit
@@ -114,6 +119,6 @@ class SuppliersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplier_params
-      params.require(:supplier).permit(:name, :delilver_cond, :payment_cond, :reorder_cond, :preorder_cond, :order_id, :internal_id, :external_id, :service_id, :preorder_date, :website, :b2b, :repair_condition)
+      params.require(:supplier).permit(:name, :delilver_cond, :payment_cond, :reorder_cond, :preorder_cond, :order_id, :internal_id, :external_id, :service_id, :preorder_date, :website, :b2b, :repair_condition, :customer_name, :customer_street, :customer_town, :customer_phone, :customer_fax, :customer_email, :customer_notes, :customer_surname, :customer_mobile)
     end
 end
