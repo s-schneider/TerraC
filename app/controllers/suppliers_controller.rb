@@ -35,12 +35,7 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers/new
   def new
-    #FIND WHAT IS SUBMITTED BY RAILS
-    if params['active']
-       redirect_to Customer.first
-    else
-      @supplier = Supplier.new
-    end
+    @supplier = Supplier.new
   end
 
   # GET /suppliers/1/edit
@@ -59,12 +54,22 @@ class SuppliersController < ApplicationController
         format.html { redirect_to @dubl, notice: 'Lieferant existiert bereits!' }
         format.json { render json: @supplier.errors, status: :unprocessable_entity }   
       else
-        if @supplier.save
-          format.html { redirect_to @supplier, notice: 'Lieferant erfolgreich erstellt.' }
-          format.json { render :show, status: :created, location: @supplier }
+        if params[:commit] == "Kontakt nicht gelistet?"
+          if @supplier.save
+            format.html { redirect_to new_customer_path(supplier_id: @supplier.id)}
+            format.json { render :show, status: :created, location: @supplier }
+          else
+            format.html { render :new }
+            format.json { render json: @supplier.errors, status: :unprocessable_entity }
+          end
         else
-          format.html { render :new }
-          format.json { render json: @supplier.errors, status: :unprocessable_entity }
+          if @supplier.save
+            format.html { redirect_to @supplier, notice: 'Lieferant erfolgreich erstellt!' }
+            format.json { render json: @supplier.errors, status: :unprocessable_entity }
+          else
+            format.html { render :new }
+            format.json { render json: @supplier.errors, status: :unprocessable_entity }
+          end
         end
       end
     end
@@ -74,12 +79,22 @@ class SuppliersController < ApplicationController
   # PATCH/PUT /suppliers/1.json
   def update
     respond_to do |format|
-      if @supplier.update(supplier_params)
-        format.html { redirect_to @supplier, notice: 'Lieferant erfolgreich aktualisiert.' }
-        format.json { render :show, status: :ok, location: @supplier }
+      if params[:commit] == "Kontakt nicht gelistet?"
+        if @supplier.update(supplier_params)
+          format.html { redirect_to new_customer_path(supplier_id: @supplier.id)}
+          format.json { render :show, status: :created, location: @supplier }
+        else
+          format.html { render :new }
+          format.json { render json: @supplier.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @supplier.errors, status: :unprocessable_entity }
+        if @supplier.update(supplier_params)
+          format.html { redirect_to @supplier, notice: 'Lieferant erfolgreich aktualisiert.' }
+          format.json { render :show, status: :ok, location: @supplier }
+        else
+          format.html { render :edit }
+          format.json { render json: @supplier.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
