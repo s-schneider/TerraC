@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111171911) do
+ActiveRecord::Schema.define(version: 20161222134255) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "article_producer"
@@ -36,11 +36,10 @@ ActiveRecord::Schema.define(version: 20170111171911) do
     t.datetime "updated_at",          null: false
     t.text     "customer_notes"
     t.string   "customer_surname"
+    t.string   "customer_fax"
     t.string   "customer_mobile"
     t.string   "customer_club"
     t.string   "customer_newsletter"
-    t.string   "customer_fax"
-    t.string   "customer_group"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -90,13 +89,14 @@ ActiveRecord::Schema.define(version: 20170111171911) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "order_id"
-    t.integer  "service_id"
     t.integer  "internal_id"
+    t.integer  "service_id"
     t.integer  "external_id"
     t.date     "preorder_date"
     t.string   "website"
     t.string   "b2b"
-    t.string   "repair_condition"
+    t.text     "repair_condition"
+    t.         "attachment"
   end
 
   create_table "users", force: :cascade do |t|
