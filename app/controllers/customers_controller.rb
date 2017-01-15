@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
 
     @err = 0
     @existing_customers.each do |c|
-      if c.customer_surname == @customer.customer_surname && c.customer_name == @customer.customer_name && c.customer_street == @customer.customer_street
+      if c.customer_surname == @customer.customer_surname && c.customer_name == @customer.customer_name
         @dubl = c
         @err += 1
       end
