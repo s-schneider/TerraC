@@ -1,8 +1,7 @@
 class Receipt < ApplicationRecord
-	include  Filterable 
+	include Filterable 
 	belongs_to :customer
 	belongs_to :supplier
-	# belongs_to :articles
 
 	scope :type, -> (receipt_type) {where receipt_type: receipt_type}
 	scope :person, -> (receipt_person) {where receipt_person: receipt_person}

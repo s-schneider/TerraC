@@ -62,7 +62,11 @@
 
 <b>
 <%= @customer.receipts.count %>
-</b> Vorgänge für <%= @customer.customer_name + " " + @customer.customer_surname %> |
+<% if @customer.receipts.count != 1 %>
+  </b> Vorgänge für <%= @customer.customer_name + " " + @customer.customer_surname %> |
+<% else %>
+  </b> Vorgang für <%= @customer.customer_name + " " + @customer.customer_surname %> |
+<% end %>
 <b>
 <%= link_to 'Neuer Vorgang für Person', new_receipt_path(@customer) %> |
 <%= link_to 'Personendaten ändern', edit_customer_path(@customer) %> |

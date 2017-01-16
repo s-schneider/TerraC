@@ -13,6 +13,8 @@ class CustomersController < ApplicationController
       @customers = Customer.search(params[:search]).order("created_at DESC")
     elsif params[:customer]
       @customers = Customer.where(id: params[:id])
+    elsif params[:cgroup]
+      @customers = Customer.filter(params.slice(:cgroup))
     else
       @customers = Customer.all.order('customer_surname ASC')
     end
