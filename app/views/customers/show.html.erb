@@ -64,11 +64,11 @@
 <%= @customer.receipts.count %>
 </b> Vorgänge für <%= @customer.customer_name + " " + @customer.customer_surname %> |
 <b>
-<%= link_to 'Neuer Vorgang für Personen', new_receipt_path(@customer) %> |
+<%= link_to 'Neuer Vorgang für Person', new_receipt_path(@customer) %> |
 <%= link_to 'Personendaten ändern', edit_customer_path(@customer) %> |
 </b>
 <% if @customer.receipts.count == 0 %>
-<%= link_to 'Personen Löschen', @customer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+<%= link_to 'Person Löschen', @customer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
 <% end %>
 
 <%= render 'receipts/index', receipts: @customer.receipts %>

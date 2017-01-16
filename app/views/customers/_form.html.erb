@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label "Personen-Gruppe" %>
+    <%= f.select :customer_group, ['Kunden','Mitarbeiter', 'Lieferanten'] %>
+  </div>
+
   <p>Bitte Vorname, Nachname und Adresse eintragen, um doppelte Personeneinträge zu verhindern</p>
   <div class="field">
     <%= f.label "Vorname" %>
