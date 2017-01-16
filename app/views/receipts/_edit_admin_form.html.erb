@@ -23,7 +23,7 @@
 
 
   <div class="field">
-    <%= f.label "Kunde" %>
+    <%= f.label "Person" %>
     <%= f.collection_select(:customer_id, Customer.all, :id, :customer_surname) %> 
   </div>
 
@@ -95,7 +95,7 @@
   </div>
 
     <div class="field">
-    <%= f.label "Kundeninfo am" %>
+    <%= f.label "Personeninfo am" %>
     <%= f.date_select :customer_notice, {:include_blank => true, :default => nil, :order => [:day, :month, :year]} %>
   </div>
 

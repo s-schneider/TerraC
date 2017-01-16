@@ -5,21 +5,21 @@
 <br>
 
 <%= form_tag(customers_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Kunden durchsuchen" %>
+<%= text_field_tag :search, params[:search], placeholder: "Personen durchsuchen" %>
 <%= submit_tag "Suchen" %>
 <% end %>
 
 <br><br>
 
 <div class='header' BGCOLOR="FFFFFF">
-<%= link_to 'Alle Kunden', customers_path %> ||
-<%= link_to 'Neuer Kunde', new_customer_path %> ||
+<%= link_to 'Alle Personen', customers_path %> ||
+<%= link_to 'Neuer Person', new_customer_path %> ||
 </div>
 
 <% if @customers.present? %>
   <%= render "index", customers: @customers %>
 <% else %>
-  <p>Keine Kunden gefunden, die den Suchbegriff <%= params[:search] %> beinhalten.</p>
+  <p>Keine Personen gefunden, die den Suchbegriff <%= params[:search] %> beinhalten.</p>
 <% end %>
 
 

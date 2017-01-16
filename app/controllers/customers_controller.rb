@@ -58,14 +58,14 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @err == 0
         if @customer.save
-          format.html { redirect_to @customer, notice: 'Kunde wurde erfolgreich erstellt.' }
+          format.html { redirect_to @customer, notice: 'Person wurde erfolgreich erstellt.' }
           format.json { render :show, status: :created, location: @customer }
         else
           format.html { render :new }
           format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to @dubl, notice: 'Kunde existiert bereits!' }
+        format.html { redirect_to @dubl, notice: 'Person existiert bereits!' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -79,7 +79,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Kundendaten wurden erfolgreich aktualisiert.' }
+        format.html { redirect_to @customer, notice: 'Personendaten wurden erfolgreich aktualisiert.' }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
@@ -93,7 +93,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Kunde wurde erfolgreich gelöscht.' }
+      format.html { redirect_to customers_url, notice: 'Person wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end

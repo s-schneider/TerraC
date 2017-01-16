@@ -33,7 +33,7 @@
   <% if @supplier.order_id %>
   <% @order_contact = Customer.find(@supplier.order_id) %>
   <%= @order_contact.customer_name%> <%= @order_contact.customer_surname%>
-  <%= link_to 'Kundendaten', @order_contact%> 
+  <%= link_to 'Personendaten', @order_contact%> 
   <% else %>
   <p>
     Kein Bestell Kontakt Vorhanden
@@ -48,7 +48,7 @@
   <% if @supplier.internal_id %>
   <% @internal_contact = Customer.find(@supplier.internal_id) %>
   <%= @internal_contact.customer_name%> <%= @internal_contact.customer_surname%>
-  <%= link_to 'Kundendaten', @order_contact%> 
+  <%= link_to 'Personendaten', @order_contact%> 
   <% else %>
   <p>
     Kein Innendienst Kontakt vorhanden
@@ -62,7 +62,7 @@
   <% if @supplier.external_id %>
   <% @external_contact = Customer.find(@supplier.external_id) %>
   <%= @external_contact.customer_name%> <%= @external_contact.customer_surname%>
-  <%= link_to 'Kundendaten', @order_contact%>
+  <%= link_to 'Personendaten', @order_contact%>
   <% else %>
   <p>
     Kein Außendienst Kontakt vorhanden
@@ -76,7 +76,7 @@
   <% if @supplier.service_id %>
   <% @service_contact = Customer.find(@supplier.service_id) %>
   <%= @service_contact.customer_name%> <%= @service_contact.customer_surname%>
-  <%= link_to 'Kundendaten', @order_contact%>
+  <%= link_to 'Personendaten', @order_contact%>
   <% else %>
   <p>
     Kein Service Kontakt vorhanden

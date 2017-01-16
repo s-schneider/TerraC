@@ -79,8 +79,8 @@ class ReportPdf < Prawn::Document
   end
 
   def customer_file
-    text "Kundendaten"
-    # [{:content => "Kundendaten", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}],
+    text "Personendaten"
+    # [{:content => "Personendaten", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}, {:content => "", :border_width => 0}],
     content = [   
                   [{:content => "Name: "}, {:content => @receipt.customer.customer_name + " " + @receipt.customer.customer_surname}],
                   [{:content => "Straße: "}, {:content => @receipt.customer.customer_street}],
@@ -116,7 +116,7 @@ class ReportPdf < Prawn::Document
     content = [
                   [{:content => "Bestellt am: "}, {:content => order_date}],
                   [{:content => "Wareneingang am: "}, {:content => order_receiving}],
-                  [{:content => "Kundeninfo am: "}, {:content => customer_notice}]
+                  [{:content => "Personeninfo am: "}, {:content => customer_notice}]
     ]
 
     table content, :cell_style => {:width => 270}
