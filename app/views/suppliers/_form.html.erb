@@ -28,25 +28,25 @@
 
   <div class="field">
     <%= f.label "Bestell Kontakt" %>
-    <%= f.collection_select(:order_id, Customer.all.order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
+    <%= f.collection_select(:order_id, Customer.filter(cgroup:'Lieferanten').order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
     <%= f.submit 'Kontakt nicht gelistet?' %>
   </div> 
 
   <div class="field">
     <%= f.label "Innendienst Kontakt" %>
-    <%= f.collection_select(:internal_id, Customer.all.order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
+    <%= f.collection_select(:internal_id, Customer.filter(cgroup:'Lieferanten').order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
     <%= f.submit 'Kontakt nicht gelistet?' %>
   </div> 
 
     <div class="field">
     <%= f.label "Service Kontakt" %>
-    <%= f.collection_select(:service_id, Customer.all.order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %> 
+    <%= f.collection_select(:service_id, Customer.filter(cgroup:'Lieferanten').order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %> 
     <%= f.submit 'Kontakt nicht gelistet?' %>
   </div> 
 
     <div class="field">
     <%= f.label "Außendienst Kontakt" %>
-    <%= f.collection_select(:external_id, Customer.all.order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
+    <%= f.collection_select(:external_id, Customer.filter(cgroup:'Lieferanten').order('customer_surname ASC'), :id, :full_name, :include_blank => "Nicht bekannt") %>
     <%= f.submit 'Kontakt nicht gelistet?' %>
   </div> 
 
