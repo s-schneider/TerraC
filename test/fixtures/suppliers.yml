@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  delilver_cond: MyText
+  payment_cond: MyText
+  reorder_cond: MyText
+  preorder_cond: MyText
+
+two:
+  name: MyString
+  delilver_cond: MyText
+  payment_cond: MyText
+  reorder_cond: MyText
+  preorder_cond: MyText

@@ -1,0 +1,129 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'layouts/links', user: @user %>
+<br><br>
+
+
+  <h1><%= @supplier.name %></h1>
+
+<p>
+  <strong>Website:</strong>
+
+  <%if @supplier.website %>
+    <%= link_to @supplier.website, url_with_protocol(@supplier.website), :target => '_blank' %>
+  <% else %>
+    Keine Website eingetragen
+  <% end %>
+
+  <br><br>
+
+  <strong>B2B:</strong>
+
+  <%if @supplier.b2b %>
+  <%= link_to "Bestellportal", url_with_protocol(@supplier.b2b), :target => '_blank' %>
+  <% else %>
+    Kein Bestellportal eingetragen
+  <% end %>
+</p>
+
+
+<p>
+  <strong>Bestell Kontakt:</strong>
+  <br>
+  <% if @supplier.order_id %>
+  <% @order_contact = Customer.find(@supplier.order_id) %>
+  <%= @order_contact.customer_name%> <%= @order_contact.customer_surname%>
+  <%= link_to 'Personendaten', @order_contact%> 
+  <% else %>
+  <p>
+    Kein Bestell Kontakt Vorhanden
+  </p>
+  <% end %>
+
+</p>
+
+<p>
+  <strong>Innendienst Kontakt:</strong>
+  <br>
+  <% if @supplier.internal_id %>
+  <% @internal_contact = Customer.find(@supplier.internal_id) %>
+  <%= @internal_contact.customer_name%> <%= @internal_contact.customer_surname%>
+  <%= link_to 'Personendaten', @order_contact%> 
+  <% else %>
+  <p>
+    Kein Innendienst Kontakt vorhanden
+  </p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Außendienst Kontakt:</strong>
+  <br>
+  <% if @supplier.external_id %>
+  <% @external_contact = Customer.find(@supplier.external_id) %>
+  <%= @external_contact.customer_name%> <%= @external_contact.customer_surname%>
+  <%= link_to 'Personendaten', @order_contact%>
+  <% else %>
+  <p>
+    Kein Außendienst Kontakt vorhanden
+  </p>
+  <% end %> 
+</p>
+
+<p>
+  <strong>Service Kontakt:</strong>
+  <br>
+  <% if @supplier.service_id %>
+  <% @service_contact = Customer.find(@supplier.service_id) %>
+  <%= @service_contact.customer_name%> <%= @service_contact.customer_surname%>
+  <%= link_to 'Personendaten', @order_contact%>
+  <% else %>
+  <p>
+    Kein Service Kontakt vorhanden
+  </p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Reklamationsvorgehen:</strong>
+  <br><br>
+  <%= @supplier.repair_condition %>
+</p>
+
+<p>
+  <strong>Lieferbedingungen:</strong>
+  <br><br>
+  <%= @supplier.delilver_cond %>
+</p>
+
+<p>
+  <strong>Zahlungsbedingungen:</strong>
+  <br><br>
+  <%= @supplier.payment_cond %>
+</p>
+
+<p>
+  <strong>Nachorderbedingungen:</strong>
+  <br><br>
+  <%= @supplier.reorder_cond %>
+</p>
+
+<p>
+  <strong>Vororderdatum:</strong>
+  <br><br>
+  <%= @supplier.preorder_date %>
+</p>
+
+<p>
+  <strong>Vororderbedingungen:</strong>
+  <br><br>
+  <%= @supplier.preorder_cond %>
+</p>
+
+
+
+
+<br><br>
+
+<%= link_to 'Ändern', edit_supplier_path(@supplier) %> |
+<%= link_to 'Zurück', suppliers_path %>

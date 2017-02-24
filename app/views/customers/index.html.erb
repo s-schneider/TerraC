@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'layouts/links', user: @user %>
+
+<br>
+
+<%= form_tag(customers_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Personen durchsuchen" %>
+<%= submit_tag "Suchen" %>
+<% end %>
+
+<br><br>
+
+<div class='header' BGCOLOR="FFFFFF">
+<%= link_to 'Alle Personen', customers_path %> ||
+<%= link_to 'Kunden', customers_path(cgroup: 'Kunden') %> |||
+<%= link_to 'Mitarbeiter', customers_path(cgroup: 'Mitarbeiter') %> |||
+<%= link_to 'Neue Person', new_customer_path %>
+</div>
+
+<% if @customers.present? %>
+  <%= render "index", customers: @customers %>
+<% else %>
+  <p>Keine Personen gefunden, die den Suchbegriff <%= params[:search] %> beinhalten.</p>
+<% end %>
+
+
+
+
+
+

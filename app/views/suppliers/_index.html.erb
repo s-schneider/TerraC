@@ -1,0 +1,45 @@
+<h1>Lieferanten</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Website</th>
+      <th>B2B</th>   
+      <th>Vororder Datum</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suppliers.each do |supplier| %>
+      <tr>
+        <td><%= link_to supplier.name, supplier %></td>
+        <% if supplier.website == "" %>
+          <td></td>
+        <% else %>
+          <td> <%= link_to supplier.website, url_with_protocol(supplier.website), :target => '_blank' %></td>
+        <% end %>
+        <% if supplier.b2b == "" %>
+          <td></td>
+        <% else %>
+          <td><%= link_to "Bestellportal", url_with_protocol(supplier.b2b), :target => '_blank' %></td> 
+        <% end %>
+
+        <% if supplier.preorder_date == nil %>
+          <%= " " %>
+        <% else %>
+          <td><%= supplier.preorder_date.strftime("%d.%m.%Y") %></td>
+        <% end %>
+        <td><%= link_to 'Zeigen', supplier %></td>
+        <td><%= link_to 'Ändern', edit_supplier_path(supplier) %></td>
+        <% if @user == 1 %>
+          <td><%= link_to 'Löschen', supplier, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
