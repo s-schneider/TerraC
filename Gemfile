@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'prawn-rails'
 
 # Paperclip
-gem 'paperclip', "~> 4.1.1"
+gem 'paperclip', "~> 5.2.0"
 
 # bcrypt
 gem 'bcrypt'
